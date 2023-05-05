@@ -1,0 +1,15 @@
+.pred{
+    background-color: #FFF3CD;
+    border-radius: 4px;
+    padding: 25px;
+}
+
+.pred p{
+    color: #856404;
+    margin: 0;
+}
+
+.pred a{
+    text-decoration: none;
+    color: #00A2DC;
+}

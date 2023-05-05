@@ -1,0 +1,55 @@
+.form{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    /* padding-top: 40px; */
+}
+
+.form h3{
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 40px;
+}
+
+.form fieldset{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+    width: 30%;
+}
+
+.fieldset input{
+    width: 100%;
+    padding: 15px 20px;
+    outline: none;
+    border: 1px solid rgba(31, 31, 31, .1);
+    border-radius: 4px;
+    font-size: 15px;
+    box-sizing: border-box;
+}
+
+/* .form fieldset:nth-child(3){
+    padding: 15px 0;
+    border: none;
+} */
+
+.fieldset button{
+    width: 100%;
+    padding: 15px 20px;
+    border: none;
+    background-color: #00A2DC;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.new-form fieldset{
+    width: 50%;
+}
+
+.select-categ{
+    padding: 13px;
+}

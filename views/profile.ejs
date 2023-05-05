@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%-include('partials/head.ejs')%>
+    <title>Document</title>
+</head>
+<body>
+    <%-include('partials/header.ejs')%>
+    <!-- <header>
+        <div class="head-item head-logo">
+            <a href="/">Decode Blog</a>
+        </div>
+        <div class="head-item head-search">
+            <div class="head-search-input">
+                <input type="text" placeholder="Поиск по блогам">
+            </div>
+            <div class="head-search-btn">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <button>Найти</button>
+            </div>
+        </div>
+        <div class="head-item admin-head">
+            <a href="/profile"><img src="/images/avatar.svg" alt=""></a>
+        </div>
+    </header> -->
+    
+    <div class="container">
+        <div class="main">
+            <div class="main-item prof-main">
+                    <div class="profile-main-item">
+                        <h1>Мои блоги</h1>
+                        <a href="/new">Новый блог</a>
+                    </div>
+            </div>
+                <div class="main-item">
+                        <img src="/images/main.svg" alt="">
+                        <!-- <h4 class="main-item-tit">Обзор Report Manager от Webix</h4> -->
+                        <div class="admin-menu">
+                            <h4 class="main-item-tit">Обзор Report Manager от Webix</h4>
+                            <div class="profile-menu"  onclick="chageBurgerMenu()">
+                                <i class="fa-solid fa-ellipsis-vertical"></i>
+                                <p>Еще</p>  
+                                <div id="burger-menu" >
+                                    <div class="burger-menu-item"><a href="/edit">Редактировать</a></div>
+                                    <div class="burger-menu-item"><button>Удалить</button></div>
+                                </div>            
+                            </div>  
+                        </div>
+                        <a href="/blog">
+                        <p>Осень 2020 года стала плодотворным временем для специалистов Webix. </p>
+                        <p>Команда Webix выпустила восьмую версию библиотеки пользовательского интерфейса Webix с двумя новыми комплексными виджетами. Первый - зто Scheduler, о котором мы подробно говорили ранее. Второй виджет - это Gantt chart в JavaScript. Подробную информацию об этом виджете Вы можете найти в статье. </p>
+                        <p>Ноябрь продолжает тенденцию, и мы спешим поделиться с Вами новым комплексным виджетом Report Manager. Давайте рассмотрим</p>
+                        <div class="main-foot">
+                            <div class="main-foot-item">
+                                <i class="fa-regular fa-calendar"></i>
+                                <p>26.06.2020</p>
+                            </div>
+                            <div class="main-foot-item">
+                                <i class="fa-solid fa-eye"></i>
+                                <p>21</p>
+                            </div>
+                            <div class="main-foot-item">
+                                <i class="fa-solid fa-comment"></i>
+                                <p>4</p>
+                            </div>
+                            <div class="main-foot-item">
+                                <i class="fa-solid fa-comments"></i>
+                                <p>Веб-разработка</p>
+                            </div>
+                            <div class="main-foot-item">
+                                <i class="fa-solid fa-user"></i>
+                                <p>Nast1289</p>
+                            </div>
+                        </div>
+                </div>
+            </a>
+                
+            <div class="main-item">
+                    <img src="/images/main2.svg" alt="">
+                    <h4 class="main-item-tit">Разработчики изобрели методологию высокоскоростного программирования</h4>
+                    <p>Осень 2020 года стала плодотворным временем для специалистов Webix. </p>
+                    <p>Команда Webix выпустила восьмую версию библиотеки пользовательского интерфейса Webix с двумя новыми комплексными виджетами. Первый - зто Scheduler, о котором мы подробно говорили ранее. Второй виджет - это Gantt chart в JavaScript. Подробную информацию об этом виджете Вы можете найти в статье. </p>
+                    <p>Ноябрь продолжает тенденцию, и мы спешим поделиться с Вами новым комплексным виджетом Report Manager. Давайте рассмотрим</p>
+                    <div class="main-foot">
+                        <div class="main-foot-item">
+                            <i class="fa-regular fa-calendar"></i>
+                            <p>26.06.2020</p>
+                        </div>
+                        <div class="main-foot-item">
+                            <i class="fa-solid fa-eye"></i>
+                            <p>21</p>
+                        </div>
+                        <div class="main-foot-item">
+                            <i class="fa-solid fa-comment"></i>
+                            <p>4</p>
+                        </div>
+                        <div class="main-foot-item">
+                            <i class="fa-solid fa-comments"></i>
+                            <p>Веб-разработка</p>
+                        </div>
+                        <div class="main-foot-item">
+                            <i class="fa-solid fa-user"></i>
+                            <p>Nast1289</p>
+                        </div>
+                    </div>
+            </div>
+        </div>
+
+        <div class="category profile-card">
+            <div class="profile-img">
+                <img src="/images/avatar.svg" alt="">
+            </div>
+            <div class="profile-body">
+                    <h1><%=user.full_name%></h1>
+                    <p>В основном пишу про веб - разработку, на React & Redux</p>
+                    <p>285 постов за все время</p>
+                    <%
+                        if(loginUser.id == user.id){
+                    %>
+                        <a href="">Редактировать</a>
+                        <a href="/api/signout" class="logout-btn">Выход</a>
+                    <%
+                        }
+                    %>
+            </div>
+        </div>
+    </div>
+    <script src="/functions/burger-menu.js"></script>
+    <script src="/functions/delete.js"></script>
+    <script src="https://kit.fontawesome.com/0869a7851e.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</body>
+</html>

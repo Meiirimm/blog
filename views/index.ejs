@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%-include('partials/head.ejs')%>
+    <title>Document</title>
+</head>
+<body>
+    <%-include('partials/header.ejs')%>
+    <div class="container">
+        <div class="main">
+            <a href="/view">
+                <div class="main-item">
+                    <h1>Блоги по программированию</h1>
+                    <h3>Популярные и лучшие публикации по программированию для начинающих
+                        <br> и профессиональных программистов и IT-специалистов.</h3>
+                    <img src="/images/main.svg" alt="">
+                    <h4 class="main-item-tit">Обзор Report Manager от Webix</h4>
+                    <p>Осень 2020 года стала плодотворным временем для специалистов Webix. </p>
+                    <p>Команда Webix выпустила восьмую версию библиотеки пользовательского интерфейса Webix с двумя новыми комплексными виджетами. Первый - зто Scheduler, о котором мы подробно говорили ранее. Второй виджет - это Gantt chart в JavaScript. Подробную информацию об этом виджете Вы можете найти в статье. </p>
+                    <p>Ноябрь продолжает тенденцию, и мы спешим поделиться с Вами новым комплексным виджетом Report Manager. Давайте рассмотрим</p>
+                    <div class="main-foot">
+                        <div class="main-foot-item">
+                            <i class="fa-regular fa-calendar"></i>
+                            <p>26.06.2020</p>
+                        </div>
+                        <div class="main-foot-item">
+                            <i class="fa-solid fa-eye"></i>
+                            <p>21</p>
+                        </div>
+                        <div class="main-foot-item">
+                            <i class="fa-solid fa-comment"></i>
+                            <p>4</p>
+                        </div>
+                        <div class="main-foot-item">
+                            <i class="fa-solid fa-comments"></i>
+                            <p>Веб-разработка</p>
+                        </div>
+                        <div class="main-foot-item">
+                            <i class="fa-solid fa-user"></i>
+                            <p>Nast1289</p>
+                        </div>
+                    </div>
+                </div>
+    
+            </a>
+            
+            <div class="main-item">
+                <img src="/images/main2.svg" alt="">
+                <h4 class="main-item-tit">Разработчики изобрели методологию высокоскоростного программирования</h4>
+                <p>Осень 2020 года стала плодотворным временем для специалистов Webix. </p>
+                <p>Команда Webix выпустила восьмую версию библиотеки пользовательского интерфейса Webix с двумя новыми комплексными виджетами. Первый - зто Scheduler, о котором мы подробно говорили ранее. Второй виджет - это Gantt chart в JavaScript. Подробную информацию об этом виджете Вы можете найти в статье. </p>
+                <p>Ноябрь продолжает тенденцию, и мы спешим поделиться с Вами новым комплексным виджетом Report Manager. Давайте рассмотрим</p>
+                <div class="main-foot">
+                    <div class="main-foot-item">
+                        <i class="fa-regular fa-calendar"></i>
+                        <p>26.06.2020</p>
+                    </div>
+                    <div class="main-foot-item">
+                        <i class="fa-solid fa-eye"></i>
+                        <p>21</p>
+                    </div>
+                    <div class="main-foot-item">
+                        <i class="fa-solid fa-comment"></i>
+                        <p>4</p>
+                    </div>
+                    <div class="main-foot-item">
+                        <i class="fa-solid fa-comments"></i>
+                        <p>Веб-разработка</p>
+                    </div>
+                    <div class="main-foot-item">
+                        <i class="fa-solid fa-user"></i>
+                        <p>Nast1289</p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+        
+
+
+        <div class="category">
+            <div class="category-tit">
+                <h1>Категории</h1>
+            </div>
+            <% category.forEach(category => { %>
+            <div class="category-item">
+                <a href="/<%=category.key%>"><%=category.name%></a>
+            </div>
+            <% })%>
+        </div>
+    </div>
+    <script src="https://kit.fontawesome.com/0869a7851e.js" crossorigin="anonymous"></script>
+</body>
+</html>

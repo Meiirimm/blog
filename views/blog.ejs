@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%-include('partials/head.ejs')%>
+    <title>Document</title>
+</head>
+<body>
+    <%-include('partials/header.ejs')%>
+
+    <div class="container">
+        <div class="main">
+            <div class="main-item">
+                <h1>Блоги по программированию</h1>
+                <h3>Популярные и лучшие публикации по программированию для начинающих
+                    <br> и профессиональных программистов и IT-специалистов.</h3>
+                <img src="/images/main.svg" alt="">
+                <div class="main-foot edit-foot">
+                    <div class="main-foot-item">
+                        <i class="fa-regular fa-calendar"></i>
+                        <p>26.06.2020</p>
+                    </div>
+                    <div class="main-foot-item">
+                        <i class="fa-solid fa-eye"></i>
+                        <p>21</p>
+                    </div>
+                    <div class="main-foot-item">
+                        <i class="fa-solid fa-comment"></i>
+                        <p>4</p>
+                    </div>
+                    <div class="main-foot-item">
+                        <i class="fa-solid fa-comments"></i>
+                        <p>Веб-разработка</p>
+                    </div>
+                    <div class="main-foot-item">
+                        <i class="fa-solid fa-user"></i>
+                        <p>Nast1289</p>
+                    </div>
+                </div>
+
+                <div class="profile-main-item profile-menu-edit">
+                    <h4 class="main-item-tit">Обзор Report Manager от Webix</h4>
+                    <div class="profile-menu"  onclick="chageBurgerMenu()">
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                        <p>Еще</p>  
+                        <div id="burger-menu" >
+                            <div class="burger-menu-item"><a href="/edit">Редактировать</a></div>
+                            <div class="burger-menu-item"><button>Удалить</button></div>
+                        </div>            
+                    </div>  
+                </div>
+                <p>Осень 2020 года стала плодотворным временем для специалистов Webix. </p>
+                <p>Команда Webix выпустила восьмую версию библиотеки пользовательского интерфейса Webix с двумя новыми комплексными виджетами. Первый - зто Scheduler, о котором мы подробно говорили ранее. Второй виджет - это Gantt chart в JavaScript. Подробную информацию об этом виджете Вы можете найти в статье. </p>
+                <p>Ноябрь продолжает тенденцию, и мы спешим поделиться с Вами новым комплексным виджетом Report Manager. Давайте рассмотрим его подробнее.</p>
+                <h2>Что такое комплексные виджеты Webix?</h2>
+                <p>В отличие от обычных виджетов пользовательского интерфейса JavaScript, комплексные виджеты - это полноценные приложения, которые не требуют дополнительной настройки и кастомизации. </p>
+                <p>Они уже готовы к интеграции в Ваше бизнес-приложение, что позволяет экономить рабочее время программистам. Это визуальное воплощение концепции low-code платформы, которой является Webix. Комплексные виджеты Webix сразу же готовы к работе, потому что они содержат функциональный фронт-энд слой и, при необходимости, снабжены различными опциями для бэк-энда.</p>
+                <p>Гибкая архитектура Webix позволяет легко настраивать эти приложения, расширять их функциональность и интегрировать в существующие решения.</p>
+                <div class="comment">
+                    <div class="com-item"><h1>2 комментариея</h1></div>
+                    <div class="com-item">
+                        <div class="com-item-prof">
+                            <img src="/images/avatar.svg" alt="">
+                            <span>Елнур Сеитжанов</span>    
+                        </div>
+                        <p>В отличие от обычных виджетов пользовательского интерфейса JavaScript, комплексные виджеты - это полноценные приложения, которые не требуют дополнительной настройки и кастомизации.</p>
+                    </div>
+                    <div class="com-item">
+                        <div class="com-item-prof">
+                            <img src="/images/avatar.svg" alt="">
+                            <span>Елнур Сеитжанов</span>    
+                        </div>
+                        <p>В отличие от обычных виджетов пользовательского интерфейса JavaScript, комплексные виджеты - это полноценные приложения, которые не требуют дополнительной настройки и кастомизации.</p>
+                    </div>
+                    <div class="com-item">
+                        <form action="" class="form com-form">
+                            <fieldset class="fieldset">
+                                <input type="text" placeholder="Введит текст комментария">
+                            </fieldset>
+                            <fieldset class="fieldset"><button type="submit">Отправить</button></fieldset>
+                        </form>                
+                    </div>
+                </div>
+            </div>            
+        </div>
+        <div class="category">
+            <div class="category-tit">
+                <h1>Категории</h1>
+            </div>
+            <div class="category-item">
+                <a href="">Прогнозы в IT</a>
+            </div>
+            <div class="category-item">
+                <a href="">Веб-разработка</a>
+            </div>
+            <div class="category-item">
+                <a href="">Мобильная разработка</a>
+            </div>
+            <div class="category-item">
+                <a href="">Фриланс</a>
+            </div>
+            <div class="category-item">
+                <a href="">Алгоритмы</a>
+            </div>
+            <div class="category-item">
+                <a href="">Тестирование IT систем</a>
+            </div>
+            <div class="category-item">
+                <a href="">Разработка игр</a>
+            </div>
+            <div class="category-item">
+                <a href="">Дизайн и юзабилити</a>
+            </div>
+            <div class="category-item">
+                <a href="">Искуственный интелект</a>
+            </div>
+            <div class="category-item">
+                <a href="">Машинное обучение</a>
+            </div>
+        </div>
+    </div>
+    <script src="/functions/burger-menu.js"></script>
+    <script src="https://kit.fontawesome.com/0869a7851e.js" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%-include('partials/head.ejs')%>
+    <title>Document</title>
+</head>
+<body>
+    <%-include('partials/header.ejs')%>
+    
+    <div class="container">
+        <div class="main">
+            <div class="main-item prof-main">
+                <div class="profile-main-item user-list">
+                    <h1>Редактировать данные</h1>
+                    <form action="" method="POST" class="edit_form">
+                        <fieldset class="fieldset"><input type="text" name="full_name" value='<%=user.full_name%>'></fieldset>
+                        <fieldset class="fieldset"><input type="text" name="email" value='<%=user.email%>'></fieldset>
+                        <button class="edit" type="submit">Добавить</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    
+
+        <div class="category profile-card">
+            <div class="profile-img">
+                <img src="/images/avatar.svg" alt="">
+            </div>
+            <div class="profile-body">
+                <% if (user.role === 'admin') { %>
+                    <h1><%=user.full_name%></h1>
+                    <p><span>Вы вошли как:</span> <%= user.email %> </p>
+                    <p><span>Роль:</span> <%= user.role %></p>
+                    <a href="">Редактировать</a>
+                    <a href="/api/signout" class="logout-btn">Выход</a>
+                <% } else { %>
+                    <h1><%=user.full_name%></h1>
+                    <p>В основном пишу про веб - разработку, на React & Redux</p>
+                    <p>285 постов за все время</p>
+                    <a href="">Редактировать</a>
+                    <a href="/api/signout" class="logout-btn">Выход</a>
+                <% } %> 
+            </div>
+        </div>
+    </div>
+    <script src="https://kit.fontawesome.com/0869a7851e.js" crossorigin="anonymous"></script>
+</body>
+</html>
