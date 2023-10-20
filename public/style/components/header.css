@@ -1,0 +1,87 @@
+header{
+    padding: 20px 5%;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 20;
+}
+
+.head-logo a{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 45px;
+    color: #00A2DC;
+    text-decoration: none;
+}
+
+.head-search{
+    display: flex;
+    align-items: center;
+}
+
+.head-search-input{
+    padding: 10px;
+    border: 1px solid #E7E7E7;
+    border-radius: 4px 0px 0px 4px;
+}
+
+.head-search-input input{
+    outline: none;
+    border: none;
+}
+
+.head-search-btn{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #00A2DC;
+    color: #fff;
+    font-size: 10px;
+    border-radius: 0px 4px 4px 0px;
+}
+
+.head-search-btn button{
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: #fff;
+    border: 1px solid #00A2DC;
+}
+
+
+.head-button a{
+    font-size: 13px;
+    text-align: center;
+    text-decoration: none;
+    padding: 13px;
+    background-color: #00A2DC;
+    color: #fff;
+    border-radius: 4px;
+    border: 1px solid #00A2DC;
+    min-width: 35%;
+}
+
+.admin-head a{
+    display: flex;
+    justify-content: end;
+}
+
+.head-item img{
+    width: 20%;
+}
+
+.head-button a:last-child{
+    margin-left: 30px;
+}
+
+.head-button{
+    width: 25%;
+    display: flex;
+    justify-content: flex-end;
+}

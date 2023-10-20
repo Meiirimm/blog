@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%-include('partials/head.ejs')%>
+    <title>Document</title>
+</head>
+<body>
+    <%-include('partials/header.ejs')%>
+
+    <div class="container new-container">
+            <form action="/api/blogs/new" method="POST" class="form new-form" enctype="multipart/form-data">
+                <h3>Новый блог</h3>
+                <fieldset class="fieldset">
+                    <input type="text" placeholder="Введите заголовок блога" name="titleRus">
+                </fieldset>
+                <fieldset class="fieldset">
+                    <select name="category" id="">
+                        <div class="select-categ"><option value="">Выберите категорию</option></div>
+                        <% category.forEach(category => { %>
+                            <div class="select-categ">
+                                <option value="<%=category._id%>"><%=category.name%></option>
+                            </div>
+                        <% })%>
+                    </select>
+                </fieldset>
+                <fieldset class="fieldset fieldset-file"><input type="file" name="image" class="custom-file-input" placeholder="Выберите картинку"></fieldset>
+                <fieldset  class="fieldset">
+                    <input type="text" value="" name="description" class="desc-input" placeholder="Введите описание блога">
+                    <!-- <textarea class="new-text" name="description" id="" cols="30" rows="10" placeholder="Введите описание блога"></textarea> -->
+                </fieldset>
+                <fieldset class="fieldset"><button type="submit">Создать</button></fieldset>
+            </form>
+    </div>
+</body>
+</html>

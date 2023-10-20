@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%-include('partials/head.ejs')%>
+    <title>Document</title>
+</head>
+<body>
+    <%-include('partials/header.ejs')%>
+
+    <div class="container">
+        <div class="main">
+            <div class="main-item">
+                <img src="<%=blog.image%>" alt="">
+                <div class="main-foot edit-foot">
+                    <div class="main-foot-item">
+                        <i class="fa-regular fa-calendar"></i>
+                        <p><%=blog.formattedDate%></p>
+                    </div>
+                    <div class="main-foot-item">
+                        <i class="fa-solid fa-eye"></i>
+                        <p>0</p>
+                    </div>
+                    <div class="main-foot-item">
+                        <i class="fa-solid fa-comment"></i>
+                        <p><%=commentCount%></p>
+                    </div>
+                    <div class="main-foot-item">
+                        <i class="fa-solid fa-comments"></i>
+                        <p><%=blog.category.name%></p>
+                    </div>
+                    <div class="main-foot-item">
+                        <i class="fa-solid fa-user"></i>
+                        <a href="/profile/<%=blog.author._id%>"><%=blog.author.full_name%></a>
+                    </div>
+                </div>
+
+                <h4 class="main-item-tit"><%=blog.titleRus%></h4>
+                <p><%=blog.description%></p>
+
+                <div class="comment">
+                    <div class="com-item"><h1><%=commentCount%> комментария</h1></div>
+                    <%
+                    var commentCount = 0;
+                    if(comment){
+                        comment.forEach(comment => {
+                            commentCount++
+                    %>
+                    <div class="com-item comment-div">
+                        <div class="com-item-prof">
+                            <img src="/images/avatar.jpg" alt="">
+                            <span><%=comment.authorId.full_name%></span>   
+                            <h4><%=comment.formattedDate%></h4> 
+                            <% 
+                                if (user._id.toString() === comment.authorId._id.toString()) { 
+                            %>
+                                <button onclick="deleteComment('<%=comment._id%>' , '<%=comment.blogId%>')"><i class="fa-regular fa-trash-can"></i></button>
+                                <a onclick="commentMenu('<%=commentCount - 1%>')"><i class="fa-solid fa-pen-to-square"></i></a>
+                            <% 
+                                } 
+                            %>
+                            <div class="comment-menu">
+                                <div class="comment-menu-item">
+                                    <h5>Редактировать комментари</h5>
+                                    <form action="/api/comment/edit" method="POST">
+                                        <fieldset>
+                                            <input type="hidden" value="<%=comment._id%>" name="id">
+                                            <input type="hidden" value="<%=blog._id%>" name="userId">
+                                        </fieldset>
+                                        <fieldset class="fieldset">
+                                            <input type="text" value="<%=comment.text%>" name="text">
+                                        </fieldset>
+                                        <fieldset class="fieldset"><button type="submit">Сохранить</button></fieldset>
+                                    </form>
+                                </div>
+                            </div>  
+                        </div>
+                        <p><%=comment.text%></p>
+                        
+                    </div>
+                    <%
+                            })
+                        }
+                    %>
+                    <%
+                        if (user && user._id){
+                    %>
+                        <div class="com-item">
+                            <form class="form com-form" onsubmit="sendComment(event)">
+                                <fieldset class="fieldset">
+                                    <textarea id="comment-text"></textarea>
+                                    <!-- <input type="text" placeholder="Введит текст комментария"> -->
+                                    <input type="hidden" value="<%=user._id%>" id="comment_author">
+                                    <input type="hidden" value="<%=blog._id%>" id="comment_blog">
+                
+                                </fieldset>
+                                <fieldset class="fieldset">
+                                    <button type="submit">Отправить</button>
+                                </fieldset>
+                            </form>                
+                        </div>
+                    <%
+                        }else{
+                    %>
+                        <div class="pred">
+                            <p>Чтобы оставить комментарий <a href="/register">зарегистрируйтесь</a>, или <a href="/login">войдите</a> в аккаунт.</p>
+                        </div>
+                    <%
+                        }
+                    %>
+                </div>
+            </div>            
+        </div>
+        <div class="category">
+            <div class="category-tit">
+                <h1>Категории</h1>
+            </div>
+            <% category.forEach(category => { %>
+            <div class="category-item">
+                <a href="/<%=category.key%>"><%=category.name%></a>
+            </div>
+            <% })%>
+        </div>
+    </div>
+    <%-include("partials/scripts.ejs")%>
+</body>
+</html>

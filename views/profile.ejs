@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%-include('partials/head.ejs')%>
+    <title>Document</title>
+</head>
+<body>
+    <%-include('partials/header.ejs')%>
+    <div class="container">
+        <div class="main">
+            <div class="main-item prof-main">
+                <div class="profile-main-item">
+                    <%
+                        if(loginUser.id == user.id){
+                    %>
+                    <h1>Мои блоги</h1>
+                    <a href="/new">Новый блог</a>
+                    <%
+                        }else{
+                    %>
+                    <h1>Блоги</h1>
+                    <%
+                        }
+                    %>
+                </div>
+            </div>
+                <%
+                var blogCount = 0;
+
+                blogs.forEach(item => {
+                  if (item.author.id == user._id) {
+                    blogCount++;
+                %>
+                <div class="main-item">
+                        <img src="<%=item.image%>" alt="">
+                        <div class="admin-menu">
+                            <a href="/view/<%=item._id%>"><h4 class="main-item-tit main-item-tit-hov"><%=item.titleRus%></h4></a>
+                            <%
+                                if(loginUser.id == user.id){
+                            %>
+                            <div class="profile-menu"  onclick="changeBurgerMenu('<%=blogCount - 1%>')">
+                                <i class="fa-solid fa-ellipsis-vertical"></i>
+                                <p>Еще</p>  
+                            
+                                <div class="burger-menu" >
+                                    <div class="burger-menu-item"><button><a href="/edit/<%=item._id%>">Редактировать</a></button></div>
+                                    <div class="burger-menu-item"><button onclick="deleteBlogsUser('<%=item._id%>' , '<%=user._id%>')">Удалить</button></div>
+                                </div>            
+                            </div>
+                            <%
+                                }
+                            %>
+                        </div>
+                        <p><%=item.description%></p>
+                        <div class="main-foot">
+                            <div class="main-foot-item">
+                                <i class="fa-regular fa-calendar"></i>
+                                <p>26.06.2020</p>
+                            </div>
+                            <div class="main-foot-item">
+                                <i class="fa-solid fa-eye"></i>
+                                <p>0</p>
+                            </div>
+                            <a href="/view/<%=item._id%>">
+                                <div class="main-foot-item">
+                                    <i class="fa-solid fa-comment"></i>
+                                    <p><%=blogCommentCounts[item._id] || 0 %></p>
+                                </div>
+                            </a>
+                                <div class="main-foot-item">
+                                <i class="fa-solid fa-comments"></i>
+                                <p><%=item.category.name%></p>
+                            </div>
+                            <div class="main-foot-item">
+                                <i class="fa-solid fa-user"></i>
+                                <a href="/profile/<%=item.author._id%>"><%=item.author.full_name%></a>
+                                <!-- <p><%=item.author.full_name%></p> -->
+                            </div>
+                            <%
+                                if(loginUser.toRead && loginUser.toRead.includes(item._id)){
+                            %>
+                                <div class="main-foot-item">
+                                    <i class="fa-solid fa-bookmark" onclick="deleteFromToRead('<%=item._id%>')"></i>
+                                    <p><%=blogBookmarkCounts[item._id] || 0 %></p>
+                                </div>
+                            <%
+                                }else{
+                            %>
+                                <div class="main-foot-item">
+                                    <i class="fa-regular fa-bookmark" onclick="saveToRead('<%=item._id%>')"></i>
+                                    <p><%=blogBookmarkCounts[item._id] || 0 %></p>
+                                </div>
+                            <%
+                                }
+                            %>
+
+                        </div>
+                </div>
+                <%
+                        }
+                    })
+                %>               
+        </div>
+
+        <div class="category profile-card">
+            <div class="profile-img">
+                <img src="/images/avatar.jpg" alt="">
+            </div>
+            <div class="profile-body">
+                    <h1><%=user.full_name%></h1>
+                    <p><%=user.osebe%></p>
+                    <p><%=blogCount%> постов за все время</p>
+                    
+                    <%
+                        if(loginUser.id == user.id){
+                    %>
+                        <a href="/blog/<%=user._id%>">Закладки</a>
+                        <a href="/editProff/<%=user._id%>">Редактировать</a>
+                        <a href="/api/signout" class="logout-btn">Выход</a>
+                    <%
+                        }
+                    %>
+            </div>
+        </div>
+    </div>
+
+
+    </div>
+    <%-include('partials/scripts.ejs')%>
+</body>
+</html>

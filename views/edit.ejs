@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%-include('partials/head.ejs')%>
+    <title>Document</title>
+</head>
+<body>
+    <%-include('partials/header.ejs')%>
+
+    <div class="container new-container">
+            <form action="/api/blogs/edit" method="POST" class="form new-form" enctype="multipart/form-data">
+                <h3>Редактировать</h3>
+                <fieldset>
+                    <input type="hidden" value="<%=blog._id%>" name="id">
+                </fieldset>
+                <fieldset class="fieldset">
+                    <input type="text" value="<%=blog.titleRus%>" placeholder="Введите заголовок блога" name="titleRus">
+                </fieldset>
+                <fieldset class="fieldset">
+                    <select name="category" id="">
+                        <div class="select-categ"><option value="">Выберите категорию</option></div>
+                        <% 
+                            category.forEach(category => { 
+                                if(category.id == blog.category){
+                        %>
+                                <option value="<%=category._id%>" selected><%=category.name%></option>
+                            <%
+                                }else{
+                            %>
+                                <option value="<%=category._id%>"><%=category.name%></option>
+                        <% 
+                                }
+                        })
+                        %>
+                    </select>
+                </fieldset>
+                <fieldset class="fieldset fieldset-file"><input type="file" name="image" class="custom-file-input" placeholder="Выберите картинку"></fieldset>
+                <fieldset  class="fieldset">
+                    <input type="text" value="<%=blog.description%>" name="description" class="desc-input">
+                    <!-- <textarea class="new-text" name="description" value="<%=blog.description%>" cols="30" rows="10" placeholder="Введите описание блога" ></textarea> -->
+                </fieldset>
+                <fieldset class="fieldset"><button type="submit">Сохранить</button></fieldset>
+            </form>
+    </div>
+</body>
+</html>

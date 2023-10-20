@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%-include('partials/head.ejs')%>
+    <title>Document</title>
+</head>
+<body>
+    <%-include('partials/header.ejs')%>
+    
+    <div class="container">
+        <div class="main">
+            <div class="main-item prof-main">
+                <!-- <div class="profile-main-item admin-main-item">
+                    <button onclick="chageBurgerMenu()">Блоги</button>
+                    <button onclick="chageBurgerMenu()">Пользователи</button>
+                </div> -->
+
+                <div class="user-list" >
+                    <h1>Пользователи</h1>
+                    <table id="table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>User Name</th>
+                                <th>ban</th>
+                                <th>delete</th>
+                            </tr>
+                        </thead>
+                        <% alluser.forEach((item, index) => { %>
+                            <%if(!item.isAdmin){%>            
+                        <tbody>
+                            <tr>
+                                <td></td>
+                                <td><%= item.full_name %> </td>
+                                <%
+                                    if(!item.isBanned){
+                                %>
+                                <td><a onclick="banUser('<%=item._id%>' , '<%=index-1%>')"><i class="fa-solid fa-ban ban"></i></a></td>
+                                <%
+                                    }else{
+                                %>
+                                <td><a onclick="unbanUser('<%=item._id%>' , '<%=index-1%>')"><i class="fa-solid fa-ban banned"></i></a></td>
+                                <%
+                                    }
+                                %>
+                                <td><a onclick="deleteUser('<%=item._id%>' , '<%=user._id%>')"><i class="fa-regular fa-trash-can"></a></td>
+                            </tr>
+                        </tbody>
+                            <%}%>
+                        <% }) %>
+                    </table>
+
+                </div>
+    
+                
+                <div class="user-list">
+                    <h1>Блоги</h1>
+                    <table id="table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Title</th>
+                                <th>Author</th>
+                                <th>edit</th>
+                                <th>delete</th>
+                                <!-- <th>publish</th> -->
+                            </tr>
+                        </thead>
+                        <%
+                            blogs.forEach(item => {
+                        %>
+                            <tbody>
+                                <tr>
+                                    <td></td>
+                                    <td><%=item.titleRus%></td>
+                                    <td><%=item.author.full_name%></td>
+                                    <td><a href="/edit/<%=item._id%>"><i class="fa-solid fa-pen-to-square"></i></a></td>
+                                    <td><a onclick="deleteBlogs('<%=item._id%>' , '<%=user._id%>')"><i class="fa-regular fa-trash-can"></i></a></td>
+                                    <!-- <td><a href=""><i class="fa-regular fa-square-check"></i></a></td> -->
+                                </tr>
+                            </tbody>    
+                        <%
+                            })
+                        %>
+                    </table>
+    
+                </div>
+            </div>            
+        </div>
+
+        <div class="category profile-card">
+            <div class="profile-img">
+                <img src="/images/avatar.jpg" alt="">
+            </div>
+            <div class="profile-body">
+                    <h1><%=user.full_name%></h1>
+                    <%
+                        if(loginUser.id == user.id){
+                    %>
+                        <a href="">Редактировать</a>
+                        <a href="/api/signout" class="logout-btn">Выход</a>
+                    <%
+                        }
+                    %>
+            </div>
+        </div>
+    </div>
+    <%-include('partials/scripts.ejs')%>
+</body>
+</html>

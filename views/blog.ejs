@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%-include('partials/head.ejs')%>
+    <title>Document</title>
+</head>
+<body>
+    <%-include('partials/header.ejs')%>
+    <div class="container">
+        <div class="main">
+            <div class="main-item prof-main">
+                <div class="profile-main-item">
+                    <h1>Сохраненные блоги</h1>
+                </div>
+                <%
+                    if(user.toRead.length > 0){
+                        user.toRead.forEach(blog => {
+                %>
+                <div class="main-item">
+                    <img src="<%=blog.image%>" alt="">
+                    <div class="admin-menu">
+                        <a href="/view/<%=blog._id%>"><h4 class="main-item-tit"><%=blog.titleRus%></h4></a>
+                    </div>
+                    <p><%=blog.description%></p>
+                    <div class="main-foot">
+                        <div class="main-foot-item">
+                            <i class="fa-regular fa-calendar"></i>
+                            <p><%=blog.formattedDate%></p>
+                        </div>
+                        <div class="main-foot-item">
+                            <i class="fa-solid fa-eye"></i>
+                            <p>0</p>
+                        </div>
+                        <a href="/view/<%=blog._id%>">
+                            <div class="main-foot-item">
+                                <i class="fa-solid fa-comment"></i>
+                                <p><%=blogCommentCounts[blog._id] || 0 %></p>
+                            </div>
+                        </a>
+                        <div class="main-foot-item">
+                            <i class="fa-solid fa-comments"></i>
+                            <p><%=blog.category.name%></p>
+                        </div>
+                        <div class="main-foot-item">
+                            <i class="fa-solid fa-user"></i>
+                            <a href="/profile/<%=blog.author._id%>"><%=blog.author.full_name%></a>
+                        </div>
+                        <div class="main-foot-item" onclick="deleteFromToRead('<%=blog._id%>')">
+                            <i class="fa-solid fa-bookmark"></i>
+                            <p><%=blogBookmarkCounts[blog._id] || 0 %></p>
+                        </div>
+                    </div>
+                </div>
+
+                <%
+                        })
+                    }
+                %>
+            </div>
+        </div>
+
+        <div class="category profile-card">
+            <div class="profile-img">
+                <img src="/images/avatar.jpg" alt="">
+            </div>
+            <div class="profile-body">
+                    <h1><%=user.full_name%></h1>
+                    <p><%=user.osebe%></p>
+                    <p><%=blogCount%> постов за все время</p>
+                    <%
+                        if(loginUser.id == user.id){
+                    %>
+                        <a href="/editProff/<%=user._id%>">Редактировать</a>
+                        <a href="/api/signout" class="logout-btn">Выход</a>
+                    <%
+                        }
+                    %>
+            </div>
+    
+        </div>
+    <%-include('partials/scripts.ejs')%>
+</body>
+</html>

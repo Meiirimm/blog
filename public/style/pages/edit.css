@@ -1,0 +1,64 @@
+.edit-foot{
+    margin: 30px 0;
+}
+
+.com-item h1{
+    font-size: 24px;
+    text-align: start;
+    margin: 0;
+}
+
+.comment{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.comment-div{
+    border-bottom: 1px solid #E7E7E7;
+}
+
+.com-form fieldset{
+    width: 100%;
+}
+
+.com-form fieldset button{
+    width: 30%;
+}
+
+.com-form fieldset input{
+    padding: 20px;
+}
+
+.com-form {
+    padding: 0;
+    display: block;
+}
+
+.com-item-prof{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.com-item-prof img{
+    width: 7%;
+}
+
+.com-item-prof span{
+    font-size: 24px;
+}
+
+.blog-main a {
+    text-decoration: none;
+}
+
+.com-item-prof>button{
+    border: none;
+    background-color: transparent;
+}
+.com-item-prof>button i, .com-item-prof>a i{
+    font-size: 13px;
+    color: #777;
+}

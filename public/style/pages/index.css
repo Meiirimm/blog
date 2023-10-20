@@ -1,0 +1,30 @@
+.main{
+    padding: 50px 60px;
+    background-color: #fff;
+    min-height: 75vh;
+    width: calc(75% - 15px);
+    border-radius: 3px;
+}
+
+.category{
+    padding: 50px 30px;
+    background-color: #fff;
+    width: calc(25% - 15px);
+    display: flex;
+    flex-direction: column;
+    border-radius: 3px;
+    box-shadow: 0 2px 12px rgb(136 136 136 / 15%);
+}
+
+.pages{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    font-size: 16px;
+}
+
+.pages a{
+    color: #00A2DC;
+    font-weight: 500;
+}

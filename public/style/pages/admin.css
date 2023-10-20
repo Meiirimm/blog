@@ -1,0 +1,54 @@
+#table {
+	border: 1px solid #dddddd;
+	border-collapse: collapse;
+	width: 100%;
+}
+#table th {
+	/* font-weight: bold; */
+	padding: 10px;
+	background: #00A2DC;
+	color: #fff;
+	border: 1px solid #dddddd;
+	text-align: center;
+	vertical-align: middle;
+}
+#table td {
+	border: 1px solid #dddddd;
+	padding: 10px;
+	text-align: center;
+	vertical-align: middle;
+}
+
+#table td a{
+	text-decoration: none;
+}
+
+#table td i{
+	color: #00A2DC;
+}
+
+/* Нечетные строки */
+#table tbody tr:nth-child(odd){
+	background: #fff;
+}
+
+/* Четные строки */
+#table tbody tr:nth-child(even){
+	background: #F7F7F7;
+}
+
+.user-list{
+	margin-bottom: 50px;
+}
+
+.user-list h1{
+	text-align: start;
+}
+
+.banned{
+	color: red;
+}
+
+#table td .banned{
+	color: red;
+}

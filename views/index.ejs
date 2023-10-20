@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%-include('partials/head.ejs')%>
+    <title>Document</title>
+</head>
+<body>
+    <%-include('partials/header.ejs')%>
+    <div class="container">
+        <div class="main">
+                <h1>Блоги по программированию</h1>
+                <h3>Популярные и лучшие публикации по программированию для начинающих
+                    <br> и профессиональных программистов и IT-специалистов.</h3>
+                <%
+                    blogs.forEach((item) => {
+                %>
+                <div class="main-item">
+                    <img src="<%=item.image%>" alt="">
+                    <a href="/view/<%=item._id%>">
+                    <h4 class="main-item-tit main-item-tit-hov"><%=item.titleRus%></h4>
+                    </a>
+                    <p><%=item.description%></p>
+                    <div class="main-foot">
+                        <div class="main-foot-item">
+                            <i class="fa-regular fa-calendar"></i>
+                            <p><%=item.formattedDate%></p>
+                        </div>
+                        <div class="main-foot-item">
+                            <i class="fa-solid fa-eye"></i>
+                            <p>0</p>
+                        </div>
+                        <a href="/view/<%=item._id%>">
+                            <div class="main-foot-item">
+                                <i class="fa-solid fa-comment"></i>
+                                <p><%=blogCommentCounts[item._id] || 0 %></p>
+                            </div>
+                        </a>
+                        <div class="main-foot-item">
+                            <i class="fa-solid fa-comments"></i>
+                            <p><%=item.category.name%></p>
+                        </div>
+                        <div class="main-foot-item">
+                            <i class="fa-solid fa-user"></i>
+                            <a href="/profile/<%=item.author._id%>"><%=item.author.full_name%></a>
+                        </div>
+
+                        <%
+                            if(user && user.toRead && user.toRead.includes(item._id)){
+                        %>
+                            <div class="main-foot-item">
+                                <i class="fa-solid fa-bookmark" onclick="deleteFromToRead('<%=item._id%>')"></i>
+
+                                <p><%=blogBookmarkCounts[item._id] || 0 %></p>
+                            </div>
+                        <%
+                            }else{
+                        %>
+                            <div class="main-foot-item">
+                                <i class="fa-regular fa-bookmark" onclick="saveToRead('<%=item._id%>')"></i>
+                                <p><%=blogBookmarkCounts[item._id] || 0 %></p>
+                            </div>
+                        <%
+                            }
+                        %>
+
+                    </div>
+                </div>
+
+                <%
+                    })
+                %>
+                <div class="pages">
+                    <%
+                        let localsString = ''
+                        if(locals.categ){
+                            localsString = `categ=${locals.categ}&`
+                        }
+                        if(locals.search){
+                            localsString = `search=${locals.search}&`
+                        }
+                        for(let i = 0; i < pages; i++){
+                    %>
+                        <a href="?<%=localsString%>page=<%=i%>"><%=i + 1%></a>
+                    <%
+                        }
+                    %>
+                </div>
+        </div>
+
+        
+
+
+        <div class="category">
+            <div class="category-tit">
+                <h1>Категории</h1>
+            </div>
+            <% category.forEach(category => { %>
+            <div class="category-item">
+                <a href="?categ=<%=category.key%>"><%=category.name%></a>
+            </div>
+            <% })%>
+        </div>
+    </div>
+    <%-include('partials/scripts.ejs')%>
+</body>
+</html>

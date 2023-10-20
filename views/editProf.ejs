@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%-include('partials/head.ejs')%>
+    <title>Document</title>
+</head>
+<body>
+    <%-include('partials/header.ejs')%>
+
+    <div class=" new-container">
+            <form action="/api/user/edit" method="POST" class="form new-form" enctype="multipart/form-data">
+                <h3>Редактировать профиль</h3>
+                <fieldset>
+                    <input type="hidden" value="<%=user._id%>" name="id">
+                </fieldset>
+                <fieldset class="fieldset">
+                    <input type="text" value="<%=user.full_name%>" name="full_name">
+                </fieldset>
+                <fieldset class="fieldset">
+                    <input type="text" value="<%=user.osebe%>" name="osebe">
+                </fieldset>
+                <!-- <fieldset class="fieldset fieldset-file"><input type="file" name="image" class="custom-file-input" placeholder="Выберите картинку"></fieldset> -->
+                <fieldset  class="fieldset">
+                    <input type="text" value="<%=user.email%>" name="email" class="desc-input">
+                </fieldset>
+                <fieldset class="fieldset"><button type="submit">Сохранить</button></fieldset>
+            </form>
+            <span>Удалить мой аккаунт: <button onclick="deleteAcc('<%=user._id%>')">Удалить</button></span>
+
+    </div>
+    <%-include('partials/scripts.ejs')%>
+</body>
+</html>

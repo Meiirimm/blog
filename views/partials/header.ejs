@@ -1,0 +1,36 @@
+<header>
+    <div class="head-item head-logo">
+        <a href="/">Decode Blog</a>
+    </div>
+    <form class="head-item head-search">
+        <div class="head-search-input">
+            <input type="text" name="search" placeholder="Поиск по блогам">
+        </div>
+        <div class="head-search-btn">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <button>Найти</button>
+        </div>
+    </form>
+    <%
+        if(user._id && user.isAdmin){
+    %>
+        <div class="head-item admin-head">
+            <a href="/admin/<%=user._id%>"><img src="/images/avatar.jpg" alt=""></a>
+        </div>
+    <%
+        }else if (user._id && !user.isAdmin){
+    %>
+        <div class="head-item admin-head">
+            <a href="/profile/<%=loginUser._id%>"><img src="/images/avatar.jpg" alt=""></a>
+        </div>
+    <%
+        }else{
+    %>
+        <div class="head-item head-button">
+            <a href="/register">Регистрация</a>
+            <a href="/login">Вход</a>
+        </div>
+    <%
+        }
+    %>
+</header>
